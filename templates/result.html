@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureChat – Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>🔒 Encryption Result</h2>
+    {% if encrypted %}
+        <p><b>Original Message:</b> {{ original }}</p>
+        <p><b>Encrypted Message:</b> {{ encrypted }}</p>
+        <p><b>Encrypted AES Key:</b> {{ encrypted_key }}</p>
+
+        <form method="POST" action="/decrypt">
+            <input type="hidden" name="encrypted" value="{{ encrypted }}">
+            <input type="hidden" name="encrypted_key" value="{{ encrypted_key }}">
+            <button type="submit">Decrypt Message</button>
+        </form>
+    {% endif %}
+
+    {% if decrypted %}
+        <p><b>Decrypted Message:</b> {{ decrypted }}</p>
+    {% endif %}
+
+    <a href="/">⬅ Back</a>
+</div>
+</body>
+</html>
